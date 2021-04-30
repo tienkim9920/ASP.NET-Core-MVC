@@ -1,0 +1,39 @@
+﻿@model IEnumerable<TodoApp.Models.USER>
+
+@{
+    ViewData["Title"] = "Home Page";
+
+}
+
+<div>
+    <h1>ADMIN MANAGE</h1>
+
+    <table class="striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        @if (Model.Any())
+        {
+            @foreach (var value in Model)
+            {
+                <tr>
+                    <td>@value.id</td>
+                    <td>@value.fullname</td>
+                    <td>@value.email</td>
+                    <td class="d-flex">
+                        <a class="btn green accent-2" asp-action="Update" asp-controller="Home" asp-route-id="@value.id">Update</a>
+                        &nbsp;
+                        <a class="btn red accent-2" asp-action="Delete" asp-controller="Home" asp-route-id="@value.id">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+        <tbody>
+        </tbody>
+    </table>
+</div>
